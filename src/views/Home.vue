@@ -1,11 +1,33 @@
 <template>
-  <v-container class="text-center">
-    <h1>Välkommen till OneDotZero - 1.0</h1>
-    <h3 class="mb-5">En del av Enköpings kommun, Utbildningsförvaltningen - Arbetsmarknadsenheten</h3>
-    <video controls>
-      <source :src="require('../assets/promo.mp4')" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <v-container fluid class="pa-0">
+    <div>
+    <v-overlay :absolute="absolute" :value="overlay"></v-overlay>
+    <v-parallax
+    dark
+    :src="require('../assets/banner.jpg')"
+  >
+    <v-row
+      align="center"
+      justify="center"
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        <h1 class="text-h2 black--text font-weight-thin mb-4">
+          Välkommen till OneDotZero
+        </h1>
+        <h4 class="subheading black--text">
+          En del av Enköpings kommun, Utbildningsförvaltningen, Arbetsmarknadsenheten
+        </h4>
+      </v-col>
+    </v-row>
+  </v-parallax>
+    </div>
+  <v-container class="mt-6">
+
+    <!-- <h1>Välkommen till OneDotZero</h1>
+    <h3 class="mb-5">En del av Enköpings kommun, Utbildningsförvaltningen, Arbetsmarknadsenheten</h3> -->
     <v-banner two-line>
       <v-avatar
         slot="icon"
@@ -99,7 +121,7 @@
       </v-btn>
     </template>
     </v-banner>
-    <v-banner two-line>
+    <v-banner two-line class="mb-5">
       <v-avatar
         slot="icon"
         color="deep-purple accent-4"
@@ -130,6 +152,12 @@
       </v-btn>
     </template>
     </v-banner>
+    <h3 class="mb-5">Se en film och bli inspirerad. Här är några exempel på vad ni/du kan få hjälp med.</h3>
+    <video controls class="mt-5">
+      <source :src="require('../assets/promo.mp4')" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </v-container>
     <!--
     <v-row class="mt-3">
       <v-col v-for="education in educations" :key="education.id" cols="12" sm="4" lg="3">
@@ -200,20 +228,23 @@ export default {
             //portfolio: false,
             //movies: false,
             //excel: false,
+            overlay: true,
+            absolute: true,
         }
     },
     methods: {
       
     },
     watch: {
-      show(){
-        console.log('first')
-      }
+
     }
 }
 </script>
 
 <style scoped>
+.v-overlay {
+  z-index: -1 !important;
+}
 video {
   outline: none;
   max-width: 100%;

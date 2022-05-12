@@ -13,91 +13,104 @@ const routes = [
   {
     path: '/portfolio',
     name: 'portfolio',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "portfolio" */ '../views/Portfolio.vue')
+    component: () => import('../views/Portfolio.vue')
   },
   {
     path: '/movies',
     name: 'movies',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "movies" */ '../views/Movies.vue')
+    component: () => import('../views/Movies.vue')
   },
   {
     path: '/threesixty',
     name: 'threesixty',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "threesixty" */ '../views/ThreeSixty.vue')
+    component: () => import('../views/ThreeSixty.vue')
   },
   {
     path: '/church',
     name: 'church',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "threesixty" */ '../views/Church.vue')
+    component: () => import('../views/Church.vue')
   },
   {
     path: '/dreampark',
     name: 'dreampark',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "dreampark" */ '../views/Dreampark.vue')
+    component: () => import('../views/Dreampark.vue')
   },
   {
     path: '/servicepoolen',
     name: 'servicepoolen',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "dreampark" */ '../views/Servicepoolen.vue')
+    component: () => import('../views/Servicepoolen.vue')
   },
   {
     path: '/westerlundska',
     name: 'westerlundska',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "westerlundska" */ '../views/Westerlundska.vue')
+    component: () => import('../views/Westerlundska.vue')
   },
   {
     path: '/map',
     name: 'map',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "map" */ '../views/Map.vue')
+    component: () => import('../views/Map.vue')
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   component: () => import('../views/About.vue')
+  // },
   {
     path: '/contact',
     name: 'contact',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue')
+    component: () => import('../views/Contact.vue')
   },
   {
     path: '/gallery',
     name: 'gallery',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "gallery" */ '../views/Gallery.vue')
+
+    component: () => import('../views/Gallery.vue')
   },
+  {
+    path: '/servicepoolen-movie',
+    name: 'servicepoolen-movie',
+    component: () => import('../components/ServicepoolenMovie.vue')
+  },
+  {
+    path: '/idetradgardarna-2020-movie',
+    name: 'idetradgardarna-2020-movie',
+    component: () => import('../components/Idetradgardarna2020.vue')
+  },
+  {
+    path: '/idetradgardarna-2021-movie',
+    name: 'idetradgardarna-2021-movie',
+    component: () => import('../components/Idetradgardarna2021.vue')
+  },
+  {
+    path: '/dreampark-movie',
+    name: 'dreampark-movie',
+    component: () => import('../components/DreamparkMovie.vue')
+  },
+  {
+    path: '/bike-ride',
+    name: 'bike-ride',
+    component: () => import('../components/BikeRide.vue')
+  },
+  {
+    path: '/brand',
+    name: 'brand',
+    component: () => import('../components/Brand.vue')
+  },
+  // {
+  //   path: '/image-map',
+  //   name: 'image-map',
+  //   component: () => import('../views/ImageMap.vue')
+  // },
+  // {
+  //   path: '/quiz',
+  //   name: 'quiz',
+  //   component: () => import('../views/Quiz.vue')
+  // },
+  // {
+  //   path: '/codepencardhover',
+  //   name: 'codepencardhover',
+  //   component: () => import('../views/CodepenCardHover.vue')
+  // },
 ]
 
 const router = new VueRouter({

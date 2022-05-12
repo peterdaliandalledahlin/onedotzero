@@ -1,5 +1,5 @@
 <template>
-    <Pano source="dreampark.jpg"></Pano> 
+    <Pano source="dreampark.jpg"></Pano>
 </template>
 
 <script>

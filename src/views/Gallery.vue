@@ -1,5 +1,6 @@
 <template>
-    <v-container>  
+    <v-container>
+            <h3 class="my-5">Ett urval av bilder vi tagit i olika sammanhang.</h3>
         <v-row>
             <v-col
             v-for="image in images"
@@ -50,6 +51,25 @@ export default {
                 {id: 12, src: require('../assets/verkstad.jpg')},
             ]
         }
+    },
+    created() {
+        const options = {
+            maximumAge: 0,
+            enableHighAccuracy: false,
+            timeout: 15000
+        }
+
+        const success = (pos) => {
+            const coords = pos.coords
+            console.log(coords)
+        }
+
+        const error = (err) => {
+            console.log(err)
+        }
+
+        navigator.geolocation.getCurrentPosition(success,error,options)
+        
     }
 }
 </script>

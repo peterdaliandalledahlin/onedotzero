@@ -1,8 +1,8 @@
 <template>
-  <v-container grid-list-sm>
+  <v-container>
     <h1>Filmer!</h1>
     
-      <!--
+      <v-row class="mt-3">
       <v-col v-for="movie in movies" :key="movie.id" cols="12" sm="4" lg="3">
           <v-card
             class="mx-auto"
@@ -11,7 +11,16 @@
             <v-img
               :src="movie.src"
               height="200px"
+              class="relative filter"
             ></v-img>
+
+            <v-icon
+              size="50"
+              color="cyan darken-3"
+              class="absolute"
+            >
+              mdi-filmstrip
+            </v-icon>
 
             <v-card-title>
               {{ movie.name }}
@@ -23,14 +32,13 @@
 
             <v-card-actions>
               <v-btn
-                @click="movie.openModal = true"
+                :to="movie.link"
                 color="orange lighten-2"
                 text
-                
               >
                 Starta!
               </v-btn>
-
+<!--
               <v-spacer></v-spacer>
                 Läs mer!
               <v-btn
@@ -40,8 +48,9 @@
               >
                 <v-icon>{{ movie.action ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
               </v-btn>
+-->
             </v-card-actions>
-
+<!--
             <v-expand-transition>
               <div v-show="movie.action">
                 <v-divider></v-divider>
@@ -51,11 +60,13 @@
                 </v-card-text>
               </div>
             </v-expand-transition>
+-->
           </v-card>
       </v-col>
--->
+      </v-row>
+<!--
       <v-layout row wrap>
-        <v-flex class="relative">
+        <v-flex>
           <v-card
             class="mx-auto"
             max-width="344"
@@ -63,7 +74,7 @@
             <v-img
               :src="require('../assets/card_img.webp')"
               height="200px"
-              class="filter"
+              class="relative filter"
             ></v-img>
 
             <v-icon
@@ -217,8 +228,8 @@
           </v-card>
         </v-flex>
       </v-layout>
-
-  
+-->
+<!-- 
     <v-dialog
       v-model="modalIdeTradgardarna2021"
       width="500"
@@ -241,7 +252,7 @@
             text
             @click="modalIdeTradgardarna2021 = false"
           >
-            I accept
+            Stäng
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -302,6 +313,35 @@
           </v-card-actions>
         </v-card>
     </v-dialog>
+    <v-dialog
+        v-model="modalServicepoolen"
+        width="500"
+      >
+
+        <v-card>
+          <v-card-title class="text-h6 black lighten-2">
+            Drömparken
+          </v-card-title>
+
+          <v-card-text>
+            <iframe v-if="modalServicepoolen" width="450" height="315" src="https://www.youtube.com/watch?v=e2bb9Q4Ao5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </v-card-text>
+
+          <v-divider></v-divider>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="primary"
+              text
+              @click="modalServicepoolen = false"
+            >
+              I accept
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+    </v-dialog>
+-->
   </v-container>
 </template>
 
@@ -309,26 +349,31 @@
 //import LazyYoutube from 'vue-lazytube'
 //import ModalIdeTradgardarna2021 from '../components/ModalIdeTradgardarna2021.vue'
 //import ModalIdeTradgardarna2020 from '../components/ModalIdeTradgardarna2020.vue'
+
 export default {
   name: 'movies',
   components: {  },
   data() {
         return {
-            // movies: [
-            //     { id: 1, src: require('../assets/sunshine.jpg'), icon: 'mdi-file-document-edit', title: 'Idéträdgårdarna, Enköping 2021', name: 'Idéträdgårdarna, Enköping 2021', description: 'Beskrivning om filmen "Idéträdgårdarna 2021"', openModal: this.modalIdeTradgardarna2021, action: this.readMoreIdeTradgardarna2021, link:'', phone1: '', phone2: '', email: ''},
-            //     { id: 2, src: require('../assets/sunshine.jpg'), icon: 'mdi-file-document-edit', title: 'Idéträdgårdarna, Enköping 2020', description: 'Beskrivning om filmen "Idéträdgårdarna 2020"', name: 'Idéträdgårdarna, Enköping 2020', openModal: this.modalIdeTradgardarna2020, action: this.readMoreIdeTradgardarna2020, link:'', phone1: '',phone2: '', email: ''},
-            //     { id: 3, src: require('../assets/sunshine.jpg'), icon: 'mdi-cash-100', title: 'Drömparken', name: 'Drömparken', description: 'Lite mer att läsa om Drömparken.', openmodal: this.modalDreampark, action: this.readMoreDreampark, link:'', phone1: '', phone2: '', email: ''},
-            // ],
-            modalIdeTradgardarna2021: false,
-            readMoreIdeTradgardarna2021: false,
-            modalIdeTradgardarna2020: false,
-            readMoreIdeTradgardarna2020: false,
-            modalDreampark: false,
-            readMoreDreampark: false,
+            movies: [
+                { id: 1, src: require('../assets/card_img.webp'), icon: 'mdi-filmstrip', title: 'Idéträdgårdarna, Enköping 2021', name: 'Idéträdgårdarna 2021', description: 'Beskrivning om filmen "Idéträdgårdarna 2021"', openModal: this.modalIdeTradgardarna2021, action: this.readMoreIdeTradgardarna2021, link:'/idetradgardarna-2021-movie', phone1: '', phone2: '', email: ''},
+                { id: 2, src: require('../assets/card_img.webp'), icon: 'mdi-filmstrip', title: 'Idéträdgårdarna, Enköping 2020', name: 'Idéträdgårdarna 2020', description: 'Beskrivning om filmen "Idéträdgårdarna 2020"', openModal: this.modalIdeTradgardarna2020, action: this.readMoreIdeTradgardarna2020, link:'/idetradgardarna-2020-movie', phone1: '',phone2: '', email: ''},
+                { id: 3, src: require('../assets/card_img.webp'), icon: 'mdi-filmstrip', title: 'Drömparken', name: 'Drömparken', description: 'Lite mer att läsa om Drömparken.', openmodal: this.modalDreampark, action: this.readMoreDreampark, link:'/dreampark-movie', phone1: '', phone2: '', email: ''},
+                { id: 4, src: require('../assets/card_img.webp'), icon: 'mdi-filmstrip', title: 'Så här kör du bil till Servicepoolen', name: 'Servicepoolen', description: 'Lite mer att läsa om Servicepoolen', openmodal: this.modalServicepoolen, action: this.readMoreServicepoolen, link:'/servicepoolen-movie', phone1: '', phone2: '', email: ''},
+                { id: 5, src: require('../assets/card_img.webp'), icon: 'mdi-filmstrip', title: 'Video filmad längs Enköpings cykelvänliga vägar', name: 'Enköping från sadeln', description: 'Lite mer att läsa om Servicepoolen', openmodal: this.modalBikeRide, action: this.readMoreBikeRide, link:'/bike-ride', phone1: '', phone2: '', email: ''},
+            ],
+            //modalIdeTradgardarna2021: false,
+            //readMoreIdeTradgardarna2021: false,
+            //modalIdeTradgardarna2020: false,
+            //readMoreIdeTradgardarna2020: false,
+            //modalDreampark: false,
+            //readMoreDreampark: false,
+            //openModal: false,
+            //modalServicepoolen: false
         }
     },
     methods: {
-      
+
     },
     watch: {
       
@@ -336,16 +381,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.v-card__title {
+  font-size: 1.2rem !important;
+}
 .filter {
-  /* filter: hue-rotate(90deg); */
+  filter: hue-rotate(90deg);
 }
 .relative {
   position: relative;
 }
 .absolute {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 45%;
+  left: 75%;
 }
 </style>
